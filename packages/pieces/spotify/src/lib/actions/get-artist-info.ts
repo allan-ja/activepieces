@@ -2,18 +2,18 @@ import { Property, createAction } from "@activepieces/pieces-framework";
 import { spotifyCommon, makeClient } from "../common";
 
 export default createAction({
-    name: 'get_playlist_info',
-    displayName: 'Get Playlist Info',
-    description: 'Retrieves details of a playlist',
+    name: 'get_artist_info',
+    displayName: 'Get Artist Info',
+    description: 'Retrieves details of a artist',
     auth: spotifyCommon.authentication,
     props: {
-        playlist_id: Property.ShortText({
-            displayName: 'Track ID',
+        artist_id: Property.ShortText({
+            displayName: 'Artist ID',
             required: true
         })
     },
     async run({auth, propsValue}) {
         const client = makeClient({auth})
-        return await client.getPlaylist(propsValue.playlist_id as string)
+        return await client.getArtist(propsValue.artist_id as string)
     }
 })
