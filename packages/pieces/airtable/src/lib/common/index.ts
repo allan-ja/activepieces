@@ -256,6 +256,28 @@ export const airtableCommon = {
     }
 
     return response
+  },
+
+  async updateRecord({ personalToken: token, fields, recordId, tableId, baseId }: UpdateParams) {
+    const request: HttpRequest = {
+      method: HttpMethod.PATCH,
+      url: `https://api.airtable.com/v0/${baseId}/${tableId}/${recordId}`,
+      authentication: {
+        type: AuthenticationType.BEARER_TOKEN,
+        token
+      },
+      body: {
+        fields
+      }
+    }
+
+    const response = await httpClient.sendRequest<AirtableRecord>(request);
+
+    if (response.status === 200) {
+      return response.body
+    }
+
+    return response
   }
 }
 
@@ -263,5 +285,13 @@ interface Params {
   personalToken: string
   baseId: string
   tableId: string
+  fields?: Record<string, unknown>
+}
+
+interface UpdateParams {
+  personalToken: string
+  baseId: string
+  tableId: string
+  recordId: string
   fields?: Record<string, unknown>
 }

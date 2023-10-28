@@ -1,5 +1,6 @@
 import { PieceAuth, createPiece } from '@activepieces/pieces-framework';
 import { airtableCreateRecordAction } from './lib/actions/create-record';
+import { airtableUpdateRecordAction } from './lib/actions/update-record';
 import { airtableNewRecordTrigger } from './lib/trigger/new-record.trigger';
 import { AuthenticationType, HttpMethod, httpClient } from '@activepieces/pieces-common';
 
@@ -45,6 +46,7 @@ export const airtable = createPiece({
     auth: airtableAuth,
     actions: [
         airtableCreateRecordAction,
+        airtableUpdateRecordAction
     ],
     triggers: [
         airtableNewRecordTrigger,
