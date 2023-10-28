@@ -11,6 +11,8 @@ import removePlaylistItems from "./remove-playlist-items"
 import getPlaylistItems from "./get-playlist-items"
 import reorderPlaylist from "./reorder-playlist"
 import getPlaylists from "./get-playlists"
+import getArtistInfo from "./get-artist-info"
+import getTrackInfo from "./get-track-info"
 
 export default [
     search,
@@ -25,5 +27,7 @@ export default [
     updatePlaylist,
     addPlaylistItems,
     removePlaylistItems,
-    reorderPlaylist
+    reorderPlaylist,
+    getArtistInfo,
+    getTrackInfo
 ]

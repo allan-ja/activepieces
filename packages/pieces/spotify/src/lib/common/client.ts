@@ -2,6 +2,8 @@ import { AuthenticationType, HttpMessageBody, HttpMethod, QueryParams, httpClien
 import { SearchRequest, SearchResult } from "./models/search"
 import { DeviceListResponse, PlaybackPauseRequest, PlaybackPlayRequest, PlaybackSeekRequest, PlaybackState, PlaybackVolumeRequest } from "./models/playback"
 import { Playlist, PlaylistAddItemsRequest, PlaylistCreateRequest, PlaylistItem, PlaylistRemoveItemsRequest, PlaylistReorderItemsRequest, PlaylistUpdateRequest } from "./models/playlist"
+import { Artist } from "./models/artist"
+import { Track } from "./models/track"
 import { User } from "./models/user"
 import { Pagination, PaginationRequest } from "./models/common"
 
@@ -137,4 +139,11 @@ export class SpotifyWebApi {
         await this.makeRequest(HttpMethod.PUT, '/playlists/' + id + '/tracks', undefined, request)
     }
 
+    async getArtist(id: string): Promise<Artist> {
+        return await this.makeRequest<Artist>(HttpMethod.GET, '/artists/' + id)
+    }
+
+    async getTrack(id: string): Promise<Track> {
+        return await this.makeRequest<Track>(HttpMethod.GET, '/tracks/' + id)
+    }
 }
