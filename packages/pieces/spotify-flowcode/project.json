@@ -1,0 +1,29 @@
+{
+  "name": "pieces-spotify-flowcode",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/pieces/spotify-flowcode/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/packages/pieces/spotify-flowcode",
+        "tsConfig": "packages/pieces/spotify-flowcode/tsconfig.lib.json",
+        "packageJson": "packages/pieces/spotify-flowcode/package.json",
+        "main": "packages/pieces/spotify-flowcode/src/index.ts",
+        "assets": ["packages/pieces/spotify-flowcode/*.md"],
+        "buildableProjectDepsInPackageJsonType": "dependencies",
+        "updateBuildableProjectDepsInPackageJson": true
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["packages/pieces/spotify-flowcode/**/*.ts"]
+      }
+    }
+  },
+  "tags": []
+}
